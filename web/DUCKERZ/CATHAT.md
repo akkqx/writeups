@@ -82,7 +82,7 @@
     "alg": "RS256",
     "typ": "JWT",
     "kid": "key-1",
-    "jku": "https://<мой-ngrok-url>/jwks.json"
+    "jku": "https://<my-ngrok-url>/jwks.json"
   }
 ```
 - **Payload:**
