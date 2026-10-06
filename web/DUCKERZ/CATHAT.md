@@ -2,7 +2,7 @@
 
 > **Категория:** Web
 > **Сложность:** Medium
-> **Уязвимость:** `jku` (JWK Set URL) Header Injection
+> **Уязвимость:** `jku` Header Injection
 
 ---
 
