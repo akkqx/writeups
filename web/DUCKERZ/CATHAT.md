@@ -90,8 +90,8 @@
   {
     "sub": "admin",
     "is_admin": true,
-    "iat": 1791277825,
-    "exp": 1791287825
+    "iat": now,
+    "exp": now+10000
   }
 ```
 
