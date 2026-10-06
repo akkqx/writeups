@@ -117,7 +117,7 @@ curl -H "Authorization: Bearer <forged_token>" http://TARGET/
 
 ## Примечание
 
-Всё описанное выше можно проделать и через **Burp Suite** — вместо curl достаточно перехватить легитимный запрос в Proxy, отправить в Repeater и подменить заголовок `Authorization` на сформированный токен.
+Всё описанное выше можно проделать и через **Burp Suite** — создать RSA-пару и вместо curl перехватить легитимный запрос в Proxy, отправить в Repeater и подменить заголовок `Authorization` на сформированный токен.
 
 Подробнее о похожем классе уязвимостей можно почитать здесь:
 [https://siunam321.github.io/ctf/portswigger-labs/JWT/jwt-4/](https://siunam321.github.io/ctf/portswigger-labs/JWT/jwt-4/)
