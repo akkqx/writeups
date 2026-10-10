@@ -42,10 +42,7 @@ API-ключ отдаётся эндпоинтом `/accountDetails` (найде
 
 **3.** **Deliver exploit to victim**
 
-**4.** Смотрим **Access log** — там API-ключ администратора:
-~~~
-GET /log?key={"username":"administrator",...,"apikey":"<KEY>"}
-~~~
+**4.** Смотрим **Access log** — там API-ключ администратора
 
 ---
 
