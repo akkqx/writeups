@@ -1,8 +1,9 @@
 # CATHAT (DUCKERZ — WEB)
 
 > **Категория:** Web
-> **Сложность:** Medium
+> **Сложность:** Easy
 > **Уязвимость:** `jku` Header Injection
+> **Источник:** [https://duckerz.ru/categories/Web/201](https://duckerz.ru/categories/Web/201)
 
 ---
 
