@@ -3,7 +3,7 @@
 > **Категория:** Web
 > **Сложность:** Easy
 > **Уязвимость:** CORS Misconfiguration (Origin Reflection)
-
+> **Лаба:** [portswigger.net/web-security/cors/lab-basic-origin-reflection-attack](https://portswigger.net/web-security/cors/lab-basic-origin-reflection-attack)
 ---
 
 ## Входные данные
