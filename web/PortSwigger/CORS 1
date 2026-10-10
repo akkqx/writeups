@@ -1,6 +1,6 @@
 # CORS PORTSWIGGER — Basic Origin Reflection Attack
 
- **Категория:** Web
+> **Категория:** Web
 > **Сложность:** Easy
 > **Уязвимость:** CORS Misconfiguration (Origin Reflection)
 
@@ -42,10 +42,4 @@ API-ключ отдаётся эндпоинтом `/accountDetails` (найде
 
 **3.** **Deliver exploit to victim**
 
-**4.** Смотрим **Access log** — там API-ключ администратора
-
----
-
-## Способы защиты
-
-Настроить ACAO по белому списку доверенных доменов, не отражать `Origin` слепо; не сочетать wildcard/reflection с `Allow-Credentials: true`.
+**4.** Смотрим **Access log** — там API-ключ администратора:
