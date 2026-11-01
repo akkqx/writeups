@@ -11,7 +11,7 @@
 
 Дана страница поиска сотрудников с одним полем ввода (параметр `name`). Введённое значение подставляется в SQL-запрос на бэкенде и используется для поиска по базе.
 
-![Страница поиска сотрудников](images/polyctf_sqli1.png)
+![Страница поиска сотрудников](../../images/polyctf_sqli1.png)
 
 ---
 
@@ -40,7 +40,7 @@ unrecognized token: "'%'"
 
 Запрос отработал и вернул расширенный список сотрудников — подтверждение, что инъекция возможна. Флага в выводе нет, значит нужно копать дальше и доставать произвольные данные через `UNION SELECT`.
 
-![Результат ' OR 1=1 -- -](images/polyctf_sqli2.png)
+![Результат ' OR 1=1 -- -](../../images/polyctf_sqli2.png)
 
 ### 3. Определение СУБД
 
@@ -72,7 +72,7 @@ no such table: information_schema.tables
 '/**/UNION/**/SELECT/**/NULL,NULL,NULL/**/FROM/**/sqlite_master/**/WHERE/**/type='table'/**/--/**/-
 ```
 
-![Результат с подобранными 3 NULL](images/polyctf_sqli3.png)
+![Результат с подобранными 3 NULL](../../images/polyctf_sqli3.png)
 
 ### 5. Получение структуры таблиц
 
@@ -84,7 +84,7 @@ no such table: information_schema.tables
 
 В выводе обнаружена таблица **`secrets`** — потенциально содержащая флаг.
 
-![Список CREATE TABLE, видна таблица secrets](images/polyctf_sqli4.png)
+![Список CREATE TABLE, видна таблица secrets](../../images/polyctf_sqli4.png)
 
 ---
 
@@ -98,7 +98,7 @@ no such table: information_schema.tables
 
 Получены все записи таблицы, включая флаг.
 
-![Финальный дамп таблицы secrets с флагом](images/polyctf_sqli5.png)
+![Финальный дамп таблицы secrets с флагом](../../images/polyctf_sqli5.png)
 
 ### Автоматизация через sqlmap
 
@@ -113,7 +113,7 @@ sqlmap -u "http://polyctf.ru:5002/search?name=%D0%95%D0%B3%D0%BE%D1%80" \
 
 Sqlmap подтвердил СУБД — SQLite, и определил параметр `name` как уязвимый.
 
-![Вывод sqlmap, подтверждение уязвимости](images/polyctf_sqli6.png)
+![Вывод sqlmap, подтверждение уязвимости](../../images/polyctf_sqli6.png)
 
 Дамп таблицы:
 
