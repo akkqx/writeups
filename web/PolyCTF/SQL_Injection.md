@@ -1,7 +1,7 @@
 # PolyCTF SQLi
 
 > **Категория:** Web
-> **Сложность:** Easy/Medium
+> **Сложность:** Easy
 > **Уязвимость:** SQL Injection (UNION-based, SQLite)
 > **Цель:** `http://polyctf.ru:5002`
 
