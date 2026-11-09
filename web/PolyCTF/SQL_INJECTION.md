@@ -3,7 +3,7 @@
 > **Категория:** Web
 > **Сложность:** Easy
 > **Уязвимость:** SQL Injection (UNION-based, SQLite)
-> **Цель:** `http://polyctf.ru:5002`
+> **Цель:** [http://polyctf.ru:5002](http://polyctf.ru:5002)
 
 ---
 
