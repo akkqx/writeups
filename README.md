@@ -7,7 +7,7 @@
 ![writeups](https://img.shields.io/badge/райтапов-6-7aa2f7?style=flat-square&labelColor=0d1117)
 ![course](https://img.shields.io/badge/курс-1-7aa2f7?style=flat-square&labelColor=0d1117)
 ![ctf](https://img.shields.io/badge/участие_в_CTF-1-7aa2f7?style=flat-square&labelColor=0d1117)
-![direction](https://img.shields.io/badge/направление-выбираю-7aa2f7?style=flat-square&labelColor=0d1117)
+![direction](https://img.shields.io/badge/направление-AppSec-7aa2f7?style=flat-square&labelColor=0d1117)
 ![commits](https://img.shields.io/github/last-commit/akkqx/writeups?style=flat-square&color=7aa2f7&labelColor=0d1117&label=последний%20коммит)
 
 </div>
