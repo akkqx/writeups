@@ -37,31 +37,6 @@
 
 Открыл этот файл напрямую — в нём оказалась логика работы с API:
 
-```js
-class ApiService {
-    constructor(version = 'v2') {
-        this.baseUrl = API_BASE_URL;
-        this.version = version;
-        this.token = localStorage.getItem('token');
-    }
-
-    setVersion(version) {
-        this.version = version;
-        this.clearToken();
-    }
-
-    setToken(token) {
-        this.token = token;
-        localStorage.setItem('token', token);
-    }
-
-    clearToken() {
-        this.token = null;
-        localStorage.removeItem('token');
-    }
-    ...
-```
-
 ![Исходный код js/api.js с классом ApiService](../../images/smart_alley3.png)
 
 ### 4. Ключевое наблюдение
