@@ -3,7 +3,7 @@
 > **Категория:** Web
 > **Сложность:** Easy
 > **Уязвимость:** Path Traversal → Source Code Disclosure → SQLite DB Leak → Unsalted SHA-512 Hash Cracking
-> **Цель:** task.duckerz.ru:21009
+> **Цель:** [task.duckerz.ru:21009](task.duckerz.ru:21009)
 
 ---
 
