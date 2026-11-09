@@ -11,7 +11,7 @@
 
 У меня есть сайт «Надёжное хранилище», работающий на PHP и выдающий пользователю его же записки. Полный доступ (судя по описанию задания) осуществляется через аккаунт администратора.
 
-![Главная страница — файл обычного пользователя](../images/reliable_storage1.png)
+![Главная страница — файл обычного пользователя](../../images/reliable_storage1.png)
 
 ---
 
@@ -39,7 +39,7 @@ GET /notes.php?download=/../../../etc/passwd
 
 Уязвимость подтверждена — сервер вернул содержимое системного файла.
 
-![Содержимое /etc/passwd через path traversal](../images/reliable_storage2.png)
+![Содержимое /etc/passwd через path traversal](../../images/reliable_storage2.png)
 
 ### 4. Утечка исходного кода приложения
 
@@ -57,7 +57,7 @@ $db = new PDO('sqlite:' . $db_path);
 if ($user && $user['password'] == hash('sha512', $password)) {
 ```
 
-![Исходный код login.php с db_path и проверкой пароля](../images/reliable_storage3.png)
+![Исходный код login.php с db_path и проверкой пароля](../../images/reliable_storage3.png)
 
 ### 5. Выгрузка базы данных
 
@@ -79,7 +79,7 @@ sqlite> .tables
 sqlite> SELECT * FROM users;
 ```
 
-![Дамп таблицы users через sqlite3](../images/reliable_storage4.png)
+![Дамп таблицы users через sqlite3](../../images/reliable_storage4.png)
 
 Хеш пароля администратора длинный — соответствует SHA-512 (без соли), что видно и по коду `login.php` выше.
 
@@ -98,11 +98,11 @@ hashcat -m 1700 -a 0 hash.txt /usr/share/wordlists/rockyou.txt
 
 Пароль подобран за секунды — значит он есть в словаре `rockyou.txt`, то есть достаточно простой/популярный.
 
-![Hashcat успешно расшифровал хеш пароля администратора](../images/reliable_storage5.png)
+![Hashcat успешно расшифровал хеш пароля администратора](../../images/reliable_storage5.png)
 
 Выполнил вход под `administrator`. В аккаунте лежит файл с флагом.
 
-![Файл администратора с флагом](../images/reliable_storage6.png)
+![Файл администратора с флагом](../../images/reliable_storage6.png)
 
 ---
 
